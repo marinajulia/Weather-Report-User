@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CWx68uV5Y9RPiADgC9Z80K5wF9RMXpvNf26Wv2ybUG96Mg6V3Q3CpVzcpZ1DgeSgsFsh4XUHxHoRdC7ARKZdkg==",
+  "dgSpecHash": "lKnjW92IDBaCO/isjqt/f0vFj4vbaRpBTvTIVcTa2sf/dwBZDwGLMTU7iIXMKz7LlPYA8JOoPzljaX0FkhzOgw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Infra\\User.Infra.csproj",
+  "projectFilePath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Infra\\User.Infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marina\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Marina\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",

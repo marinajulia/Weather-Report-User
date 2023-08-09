@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User\\User.Api.csproj": {}
+    "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User\\User.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\User.Domain.csproj": {
+    "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\User.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\User.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\User.Domain.csproj",
         "projectName": "User.Domain",
-        "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\User.Domain.csproj",
+        "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\User.Domain.csproj",
         "packagesPath": "C:\\Users\\Marina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj": {
-                "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj"
+              "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj"
               }
             }
           }
@@ -105,14 +105,14 @@
         }
       }
     },
-    "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Infra\\User.Infra.csproj": {
+    "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Infra\\User.Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Infra\\User.Infra.csproj",
+        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Infra\\User.Infra.csproj",
         "projectName": "User.Infra",
-        "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Infra\\User.Infra.csproj",
+        "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Infra\\User.Infra.csproj",
         "packagesPath": "C:\\Users\\Marina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Infra\\obj\\",
+        "outputPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Infra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -133,11 +133,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\User.Domain.csproj": {
-                "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\User.Domain.csproj"
+              "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\User.Domain.csproj": {
+                "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\User.Domain.csproj"
               },
-              "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj": {
-                "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj"
+              "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj"
               }
             }
           }
@@ -209,14 +209,14 @@
         }
       }
     },
-    "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj": {
+    "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj",
+        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj",
         "projectName": "User.SharedKernel",
-        "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj",
+        "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj",
         "packagesPath": "C:\\Users\\Marina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\obj\\",
+        "outputPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -306,14 +306,14 @@
         }
       }
     },
-    "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User\\User.Api.csproj": {
+    "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User\\User.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User\\User.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User\\User.Api.csproj",
         "projectName": "User.Api",
-        "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User\\User.Api.csproj",
+        "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User\\User.Api.csproj",
         "packagesPath": "C:\\Users\\Marina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User\\obj\\",
+        "outputPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -335,14 +335,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\User.Domain.csproj": {
-                "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Domain\\User.Domain.csproj"
+              "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\User.Domain.csproj": {
+                "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Domain\\User.Domain.csproj"
               },
-              "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Infra\\User.Infra.csproj": {
-                "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.Infra\\User.Infra.csproj"
+              "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Infra\\User.Infra.csproj": {
+                "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.Infra\\User.Infra.csproj"
               },
-              "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj": {
-                "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj"
+              "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj": {
+                "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj"
               }
             }
           }

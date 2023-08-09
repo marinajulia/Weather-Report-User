@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aNXP0ZNWeVh0W8qAnDuS8SjbCZZsjhMZSVAfUGNPEP52FgmFU2UhVjzRoYFcc/hXD2hUrxFOYrIrwNInCEXhqQ==",
+  "dgSpecHash": "NdE8V3EELHGgMRgGr9tVeurmpRlNiUaLev91Oq3hYcS0H3oMs7ivCMqmH1C/vBp4/HbukXjUpAypSmWWjbSuPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj",
+  "projectFilePath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marina\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Marina\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj": {}
+    "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj": {
+    "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj",
+        "projectUniqueName": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj",
         "projectName": "User.SharedKernel",
-        "projectPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\User.SharedKernel.csproj",
+        "projectPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\User.SharedKernel.csproj",
         "packagesPath": "C:\\Users\\Marina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marina\\OneDrive\\Área de Trabalho\\Weather-Report\\User\\User.SharedKernel\\obj\\",
+        "outputPath": "C:\\Users\\Marina\\OneDrive\\Documentos\\Teste Repo\\Weather-Report-User\\User.SharedKernel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
