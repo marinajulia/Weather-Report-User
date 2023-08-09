@@ -59,18 +59,18 @@ namespace User.Api.Controllers.User
             return Ok(response);
         }
 
-        [HttpPost]
-        [Route("login")]
-        public IActionResult PostLogin(UserLoginDto model)
-        {
-            var user = _userService.PostLogin(model);
-            if (user == null)
-                return BadRequest(_notification.GetNotifications());
+        //[HttpPost]
+        //[Route("login")]
+        //public IActionResult PostLogin(UserLoginDto model)
+        //{
+        //    var user = _userService.PostLogin(model);
+        //    if (user == null)
+        //        return BadRequest(_notification.GetNotifications());
 
-            var userEntity = _mapper.Map<UserEntity>(user);
-            var token = TokenService.GenerateToken(userEntity);
+        //    var userEntity = _mapper.Map<UserEntity>(user);
+        //    var token = TokenService.GenerateToken(userEntity);
 
-            return Ok(token);
-        }
+        //    return Ok(token);
+        //}
     }
 }
