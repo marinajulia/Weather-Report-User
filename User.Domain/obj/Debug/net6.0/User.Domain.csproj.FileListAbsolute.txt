@@ -1,0 +1,17 @@
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.csproj.AssemblyReference.cache
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.AssemblyInfoInputs.cache
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.AssemblyInfo.cs
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\bin\Debug\net6.0\User.Domain.deps.json
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\bin\Debug\net6.0\User.Domain.runtimeconfig.json
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\bin\Debug\net6.0\User.Domain.dll
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\bin\Debug\net6.0\User.Domain.pdb
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\bin\Debug\net6.0\User.SharedKernel.dll
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\bin\Debug\net6.0\User.SharedKernel.pdb
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.csproj.CopyComplete
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.dll
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\refint\User.Domain.dll
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.pdb
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\User.Domain.genruntimeconfig.cache
+C:\Users\Marina\OneDrive\Área de Trabalho\Weather-Report\User\User.Domain\obj\Debug\net6.0\ref\User.Domain.dll
