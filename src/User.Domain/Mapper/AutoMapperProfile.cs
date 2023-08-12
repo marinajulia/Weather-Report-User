@@ -13,7 +13,7 @@ namespace User.Domain.Mapper
 
                 cfg.CreateMap<CreateUserRequest, UserEntity>()
                 .ForMember(target => target.Password, opt => opt.MapFrom(source => source.Password));
-                cfg.CreateMap<UserEntity, UserResponse>();
+                cfg.CreateMap<UserEntity, UserLogin>();
 
                 cfg.CreateMap<UserEntity, CreateUserRequest>();
                 cfg.CreateMap<CreateUserRequest, UserEntity>();

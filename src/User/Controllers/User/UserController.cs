@@ -18,7 +18,6 @@ namespace User.Api.Controllers.User
     {
         private readonly INotification _notification;
         private readonly IUserService _userService;
-        IMapper _mapper = AutoMapperProfile.Initialize();
         //tirar notification
         public UserController(INotification notification, IUserService userService)
         {
@@ -28,9 +27,9 @@ namespace User.Api.Controllers.User
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateUserRequest user)
+        public async Task<ActionResult> Create([FromBody] CreateUserRequest user)
         {
-            var response = await _userService.PostRegister(user);
+            var response = await _userService.Create(user);
 
             if (response.Report.Any())
                 return UnprocessableEntity(response.Report);
@@ -39,7 +38,6 @@ namespace User.Api.Controllers.User
         }
 
         [HttpGet]
-        //[Authorize]
         public IActionResult Get()
         {
             var response = _userService.Get();
@@ -51,7 +49,6 @@ namespace User.Api.Controllers.User
 
         [HttpGet]
         [Route("id")]
-        //[Authorize]
         public IActionResult GetById(int id)
         {
             var response = _userService.GetById(id);
@@ -63,7 +60,7 @@ namespace User.Api.Controllers.User
 
         [HttpPost("auth")]
         [AllowAnonymous]
-        public async Task<ActionResult> Auth([FromBody] UserEntity request)
+        public async Task<ActionResult> Auth([FromBody] UserLogin request)
         {
             var response = await _userService.AuthAsync(request);
 

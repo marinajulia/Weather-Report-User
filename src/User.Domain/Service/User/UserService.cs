@@ -52,33 +52,20 @@ namespace User.Domain.Service.User
             return response;
         }
 
-        public async Task<Response> PostRegister(CreateUserRequest userRequest)
+        public async Task<Response> Create(CreateUserRequest userRequest)
         {
             try
             {
-                //melhorar isso:
-                //if (string.IsNullOrEmpty(userRequest.Name))
-                //    return await _notification.AddWithReturn<Task<CreateUserRequest>>(ConfigureEnum.GetEnumDescription(UserEnum.FieldNameEmpty));
-
-                //if (string.IsNullOrEmpty(userRequest.Email))
-                //    return await _notification.AddWithReturn<Task<CreateUserRequest>>(ConfigureEnum.GetEnumDescription(UserEnum.FieldEmailEmpty));
-
-                //if (string.IsNullOrEmpty(userRequest.Password))
-                //    return await _notification.AddWithReturn<Task<CreateUserRequest>>(ConfigureEnum.GetEnumDescription(UserEnum.FieldPasswordEmpty));
-
-                //if (userRequest.IdCity < 0)
-                //    return await _notification.AddWithReturn<Task<CreateUserRequest>>(ConfigureEnum.GetEnumDescription(UserEnum.FieldCityEmpty));
-
                 //colocar no enum
+                //conferir de já está cadastrado
+
                 var isEquals = await _securityService.ComparePassword(userRequest.Password, userRequest.ConfirmPassword);
-                //ta quebrando quando entra aqui
-                //if (!isEquals.Data)
-                //    return await _notification.AddWithReturn<Task<UserDto>>("colocar no enum que as senhas não coincidem");
+                if (!isEquals.Data)
+                    return Response.Unprocessable(Report.Create("Passwords do not match"));
 
                 var passwordEncripted = await _securityService.EncryptPassword(userRequest.Password);
-
                 userRequest.Password = passwordEncripted.Data;
-                //conferir de já está cadastrado
+
                 var userEntity = _mapper.Map<UserEntity>(userRequest);
 
                 var response = new Response();
@@ -95,9 +82,6 @@ namespace User.Domain.Service.User
             catch (Exception ex)
             {
                 var response = Report.Create(ex.Message);
-
-                //return Response.Unprocessable(response);
-                //return await _notification.AddWithReturn<Task<CreateUserRequest>>("deu bom n"); ;
                 return Response.Unprocessable(response);
             }
 
@@ -133,29 +117,7 @@ namespace User.Domain.Service.User
 
         }
 
-        public CreateUserRequest PostLogin(UserEntity user)
-        {
-            if (string.IsNullOrEmpty(user.Password) || string.IsNullOrEmpty(user.Email))
-                return _notification.AddWithReturn<CreateUserRequest>(ConfigureEnum.GetEnumDescription(UserEnum.EmptyFields));
-
-            var userData = _userRepository.GetUser(user.Email, user.Password);
-            if (userData == null)
-                return _notification.AddWithReturn<CreateUserRequest>(ConfigureEnum.GetEnumDescription(UserEnum.IncorrectUsernameOrPassword));
-
-            return _mapper.Map<CreateUserRequest>(userData);
-        }
-
-        public bool PutChangeData(CreateUserRequest user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool PutChangePassword(CreateUserRequest user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<Response<AuthResponse>> AuthAsync(UserEntity auth)
+        public async Task<Response<AuthResponse>> AuthAsync(UserLogin auth)
         {
             var user = await GetByLoginAsync(auth.Email);
 

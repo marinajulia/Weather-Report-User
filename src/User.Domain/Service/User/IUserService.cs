@@ -7,12 +7,9 @@ namespace User.Domain.Service.User
 {
     public interface IUserService
     {
-        Task<Response> PostRegister(CreateUserRequest userDto);
+        Task<Response> Create(CreateUserRequest userDto);
         IEnumerable<CreateUserRequest> Get();
         CreateUserRequest GetById(int id);
-        CreateUserRequest PostLogin(UserEntity user);
-        bool PutChangeData(CreateUserRequest user);
-        bool PutChangePassword(CreateUserRequest user);
-        Task<Response<AuthResponse>> AuthAsync(UserEntity auth);
+        Task<Response<AuthResponse>> AuthAsync(UserLogin auth);
     }
 }
