@@ -9,6 +9,11 @@ namespace User.Infra.Repositories.User
 {
     public class UserRepository : IUserRepository
     {
+        private readonly ApplicationContext _context;
+        public UserRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
         public bool Allow(int idUser)
         {
             throw new NotImplementedException();
@@ -16,30 +21,21 @@ namespace User.Infra.Repositories.User
 
         public IEnumerable<UserEntity> Get()
         {
-            using (var context = new ApplicationContext())
-            {
-                var user = context.User.AsNoTracking();
-                return user.ToList();
-            }
+            var user = _context.User.AsNoTracking();
+            return user.ToList();
         }
 
         public UserEntity GetById(int id)
         {
-            using (var context = new ApplicationContext())
-            {
-                var usuario = context.User.FirstOrDefault(x => x.Id == id);
-                return usuario;
-            }
+            var usuario = _context.User.FirstOrDefault(x => x.Id == id);
+            return usuario;
         }
 
         public UserEntity GetUser(string email, string password)
         {
-            using (var context = new ApplicationContext())
-            {
-                var user = context.User.FirstOrDefault(x => x.Email == email &&
-                x.Password == PasswordService.Encrypt(password));
-                return user;
-            }
+            var user = _context.User.FirstOrDefault(x => x.Email == email &&
+            x.Password == PasswordService.Encrypt(password));
+            return user;
         }
 
         public bool PostBlock(UserDto user)
@@ -49,15 +45,11 @@ namespace User.Infra.Repositories.User
 
         public async Task<UserEntity> PostRegister(UserEntity user)
         {
-            using (var context = new ApplicationContext())
-            {
-                user.Password = PasswordService.Encrypt(user.Password);
 
-                context.User.Add(user);
-                await context.SaveChangesAsync();
+            _context.User.Add(user);
+            await _context.SaveChangesAsync();
 
-                return user;
-            }
+            return user;
         }
 
         public bool PostUnlock(UserDto user)

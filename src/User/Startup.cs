@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 using User.Api.IoC;
 using User.Domain.Service.User;
 using User.Domain.Token;
+using User.Infra.Data;
 
 namespace User.Api
 {
