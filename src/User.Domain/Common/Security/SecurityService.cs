@@ -15,15 +15,14 @@ namespace User.Domain.Common.Security
         public Task<Response<string>> EncryptPassword(string password)
         {
             var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
-
-            return Task.FromResult(Response.OK<string>(passwordHash));
+            return Task.FromResult(Response.OK(passwordHash));
         }
 
         public Task<Response<bool>> VerifyPassword(string password, UserEntity user)
         {
             bool validPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
 
-            return Task.FromResult(Response.OK<bool>(validPassword));
+            return Task.FromResult(Response.OK(validPassword));
         }
     }
 }

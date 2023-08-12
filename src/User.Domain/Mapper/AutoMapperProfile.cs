@@ -10,11 +10,14 @@ namespace User.Domain.Mapper
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<UserEntity, UserDto>();
 
-                cfg.CreateMap<UserLoginDto, UserDto>();
+                cfg.CreateMap<CreateUserRequest, UserEntity>()
+                .ForMember(target => target.Password, opt => opt.MapFrom(source => source.Password));
+                cfg.CreateMap<UserEntity, UserResponse>();
 
-                cfg.CreateMap<UserDto, UserEntity>();
+                cfg.CreateMap<UserEntity, CreateUserRequest>();
+                cfg.CreateMap<CreateUserRequest, UserEntity>();
+
             });
 
             IMapper mapper = config.CreateMapper();

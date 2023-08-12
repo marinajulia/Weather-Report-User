@@ -6,6 +6,7 @@ using User.SharedKernel.Utils.Notifications;
 using User.SharedKernel.Utils;
 using User.Domain.Mapper;
 using User.Domain.Common.Security;
+using User.Domain.Common.Generators;
 
 namespace User.Api.IoC
 {
@@ -41,6 +42,8 @@ namespace User.Api.IoC
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISecurityService, SecurityService>();
+            services.AddScoped<ITokenManager, TokenManager>();
+            services.AddScoped<IGenerator, Generator>();
         }
     }
 }

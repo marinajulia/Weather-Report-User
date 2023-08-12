@@ -11,7 +11,7 @@ using User.Infra.Data;
 namespace User.Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230812185621_1")]
+    [Migration("20230812220933_1")]
     partial class _1
     {
         /// <inheritdoc />
@@ -26,11 +26,8 @@ namespace User.Infra.Migrations
 
             modelBuilder.Entity("User.Domain.Service.User.Entities.UserEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .IsRequired()

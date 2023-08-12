@@ -25,8 +25,8 @@ namespace User.Infra.Repositories.User
         }
 
         public UserEntity GetById(int id)
-        {
-            var usuario = _context.User.FirstOrDefault(x => x.Id == id);
+        { //nao esquecer id 
+            var usuario = _context.User.FirstOrDefault(x => x.Id == "");
             return usuario;
         }
 
@@ -38,21 +38,35 @@ namespace User.Infra.Repositories.User
 
         public async Task<UserEntity> PostRegister(UserEntity user)
         {
-
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 
             return user;
         }
 
-        public bool PutChangeData(UserDto user)
+        public bool PutChangeData(CreateUserRequest user)
         {
             throw new NotImplementedException();
         }
 
-        public bool PutChangePassword(UserDto user)
+        public bool PutChangePassword(CreateUserRequest user)
         {
             throw new NotImplementedException();
         }
+
+        public async Task<bool> ExistsByEmailAsync(string email)
+        {
+            var user = _context.User.FirstOrDefault(x => x.Email == email);
+            if(user != null)
+                return true;
+            return false;
+        }
+        public async Task<UserEntity> GetByEmailAsync(string email)
+        {
+            var user = _context.User.FirstOrDefault(x => x.Email == email);
+
+            return user;
+        }
+
     }
 }

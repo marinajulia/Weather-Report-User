@@ -1,4 +1,9 @@
-﻿using User.Api.IoC;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using User.Api.Extensions;
+using User.Api.IoC;
+using User.Domain.Common.Security;
 
 namespace User.Api
 {
@@ -15,51 +20,80 @@ namespace User.Api
         {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+
+            var authSettingsSection = Configuration.GetSection("AuthSettings");
+            services.Configure<AuthSettings>(authSettingsSection);
+
+            var authSettings = authSettingsSection.Get<AuthSettings>();
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authSettings.Secret));
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddPolicyScheme("weatherreport", "Authorization Bearer or AccessToken", options =>
+            {
+                options.ForwardDefaultSelector = context =>
+                {
+                    if (context.Request.Headers["Access-Token"].Any())
+                    {
+                        return "Access-Token";
+                    }
+
+                    return JwtBearerDefaults.AuthenticationScheme;
+                };
+            }).AddJwtBearer(x =>
+            {
+                x.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = "weatherreport",
+
+                    ValidateAudience = false,
+
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = key,
+
+                    ValidateLifetime = true,
+                    RequireExpirationTime = true,
+
+                };
+
+            });
 
             services.Resolve();
-
-            //var key = Encoding.ASCII.GetBytes(Settings.Secret);
-
-            //services.AddAuthentication(x =>
-            //{
-            //    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //});
-            //.AddJwtBearer(x => {
-            //    x.Events = new JwtBearerEvents
-            //    {
-            //        OnTokenValidated = context => {
-            //            var allClaims = context.Principal.Claims;
-            //            var authService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-            //            var userId = int.Parse((context.Principal.Identity.Name));
-            //            var tokenAuth = allClaims.FirstOrDefault(a => a.Type == ClaimTypes.Authentication)?.Value;
-            //            var user = authService.Allow(userId);
-            //            if (!user)
-            //                context.Fail("Unauthorized");
-
-            //            return Task.CompletedTask;
-            //        }
-            //    };
-            //    x.RequireHttpsMetadata = false;
-            //    x.SaveToken = true;
-            //    x.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuerSigningKey = true,
-            //        IssuerSigningKey = new SymmetricSecurityKey(key),
-            //        ValidateIssuer = false,
-            //        ValidateAudience = false
-            //    };
-
-            //});
+            services.SwaggerConfiguration();
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
+            //app.UseSwagger();
+            //app.UseSwaggerUI();
+
+            //app.UseRouting();
+            //app.UseAuthentication();
+
+            //app.UseAuthorization();
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
+
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(setup =>
+            {
+                setup.RoutePrefix = "swagger";
+                setup.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Documentation");
+            });
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
