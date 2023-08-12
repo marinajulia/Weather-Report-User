@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using User.Domain.Mapper;
 using User.Domain.Service.User.Dto;
-using User.Domain.Service.User.Entities;
 using User.Domain.Service.User;
-using User.Domain.Token;
 using User.SharedKernel.Utils.Notifications;
 
 namespace User.Api.Controllers.User
@@ -58,19 +56,5 @@ namespace User.Api.Controllers.User
 
             return Ok(response);
         }
-
-        //[HttpPost]
-        //[Route("login")]
-        //public IActionResult PostLogin(UserLoginDto model)
-        //{
-        //    var user = _userService.PostLogin(model);
-        //    if (user == null)
-        //        return BadRequest(_notification.GetNotifications());
-
-        //    var userEntity = _mapper.Map<UserEntity>(user);
-        //    var token = TokenService.GenerateToken(userEntity);
-
-        //    return Ok(token);
-        //}
     }
 }

@@ -5,7 +5,7 @@
 namespace User.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class test1 : Migration
+    public partial class _1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,6 @@ namespace User.Infra.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserProfile = table.Column<int>(type: "int", nullable: false),
                     IdCity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

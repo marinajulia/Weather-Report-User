@@ -44,9 +44,6 @@ namespace User.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserProfile")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("User");

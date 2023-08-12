@@ -3,8 +3,8 @@ using User.Domain.Service.User.Dto;
 using User.Domain.Service.User.Entities;
 using User.SharedKernel.Utils.Enums;
 using User.SharedKernel.Utils.Notifications;
-using User.SharedKernel.Utils;
 using User.Domain.Mapper;
+using User.Domain.Common.Security;
 
 namespace User.Domain.Service.User
 {
@@ -13,28 +13,18 @@ namespace User.Domain.Service.User
         IMapper _mapper = AutoMapperProfile.Initialize();
         private readonly INotification _notification;
         private readonly IUserRepository _userRepository;
-        private readonly UserLoggedData _userLoggedData;
+        private readonly ISecurityService _securityService;
 
-        public UserService(INotification notification, IUserRepository userRepository, UserLoggedData userLoggedData)
+        public UserService(INotification notification, IUserRepository userRepository, ISecurityService securityService)
         {
             _notification = notification;
             _userRepository = userRepository;
-            _userLoggedData = userLoggedData;
-        }
-
-        public bool Allow(int id)
-        {
-            var user = _userRepository.GetById(id);
-            if (user == null)
-                return _notification.AddWithReturn<bool>(ConfigureEnum.GetEnumDescription(UserEnum.IncorrectUsernameOrPassword));
-
-            _userLoggedData.Add(user.Id, user.UserProfile);
-
-            return true;
+            _securityService = securityService;
         }
 
         public async Task<UserDto> PostRegister(UserDto userDto)
         {
+            //melhorar isso:
             if (string.IsNullOrEmpty(userDto.Name))
                 return await _notification.AddWithReturn<Task<UserDto>>(ConfigureEnum.GetEnumDescription(UserEnum.FieldNameEmpty));
 
@@ -47,7 +37,15 @@ namespace User.Domain.Service.User
             if (userDto.IdCity < 0)
                 return await _notification.AddWithReturn<Task<UserDto>>(ConfigureEnum.GetEnumDescription(UserEnum.FieldCityEmpty));
 
-            userDto.UserProfile = UserProfileEnum.user;
+            //colocar no enum
+            var isEquals = await _securityService.ComparePassword(userDto.Password, userDto.ConfirmPassword);
+            //ta quebrando quando entra aqui
+            if (!isEquals.Data)
+                return await _notification.AddWithReturn<Task<UserDto>>("colocar no enum que as senhas não coincidem");
+
+            var passwordEncripted = await _securityService.EncryptPassword(userDto.Password);
+
+            userDto.Password = passwordEncripted.Data;
             //conferir de já está cadastrado
 
             var userEntity = _mapper.Map<UserEntity>(userDto);
@@ -87,16 +85,6 @@ namespace User.Domain.Service.User
 
             return _mapper.Map<UserDto>(usuario);
 
-        }
-
-        public bool PostBlock(UserDto user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool PostUnlock(UserDto user)
-        {
-            throw new NotImplementedException();
         }
 
         public UserDto PostLogin(UserLoginDto user)

@@ -11,8 +11,8 @@ using User.Infra.Data;
 namespace User.Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230805233117_test1")]
-    partial class test1
+    [Migration("20230812185621_1")]
+    partial class _1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,9 +46,6 @@ namespace User.Infra.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserProfile")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

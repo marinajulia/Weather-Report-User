@@ -9,8 +9,6 @@ namespace User.Domain.Service.User
         Task<UserEntity> PostRegister(UserEntity user);
         bool Allow(int idUser);
         IEnumerable<UserEntity> Get();
-        bool PostBlock(UserDto user);
-        bool PostUnlock(UserDto user);
         bool PutChangeData(UserDto user);
         bool PutChangePassword(UserDto user);
         UserEntity GetUser(string email, string password);

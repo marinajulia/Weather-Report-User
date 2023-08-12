@@ -5,6 +5,7 @@ using User.Infra.Repositories.User;
 using User.SharedKernel.Utils.Notifications;
 using User.SharedKernel.Utils;
 using User.Domain.Mapper;
+using User.Domain.Common.Security;
 
 namespace User.Api.IoC
 {
@@ -29,7 +30,6 @@ namespace User.Api.IoC
         public static void Context(IServiceCollection services)
         {
             services.AddScoped<ApplicationContext, ApplicationContext>();
-            services.AddScoped<UserLoggedData>();
             services.AddScoped<INotification, Notification>();
         }
         public static void Repositories(IServiceCollection services)
@@ -40,6 +40,7 @@ namespace User.Api.IoC
         public static void Services(IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISecurityService, SecurityService>();
         }
     }
 }
