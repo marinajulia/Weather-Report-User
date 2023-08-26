@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using User.Domain.Service.User.Dto;
 using User.Domain.Service.User.Entities;
-using User.SharedKernel.Utils.Enums;
-using User.SharedKernel.Utils.Notifications;
 using User.Domain.Mapper;
 using User.Domain.Common.Security;
 using User.Domain.Common.Validations.Base;
@@ -14,15 +12,13 @@ namespace User.Domain.Service.User
     public class UserService : IUserService
     {
         IMapper _mapper = AutoMapperProfile.Initialize();
-        private readonly INotification _notification;
         private readonly IUserRepository _userRepository;
         private readonly ISecurityService _securityService;
         private readonly ITokenManager _tokenManager;
         private readonly IGenerator _generator;
 
-        public UserService(INotification notification, IUserRepository userRepository, ISecurityService securityService, ITokenManager tokenManager, IGenerator generator)
+        public UserService(IUserRepository userRepository, ISecurityService securityService, ITokenManager tokenManager, IGenerator generator)
         {
-            _notification = notification;
             _userRepository = userRepository;
             _securityService = securityService;
             _tokenManager = tokenManager;
@@ -42,7 +38,6 @@ namespace User.Domain.Service.User
 
             if (!exists)
             {
-                //colocar enum?
                 response.Report.Add(Report.Create($"Email {email} not exists!"));
                 return response;
             }
@@ -56,12 +51,13 @@ namespace User.Domain.Service.User
         {
             try
             {
-                //colocar no enum
-                //conferir de já está cadastrado
-
                 var isEquals = await _securityService.ComparePassword(userRequest.Password, userRequest.ConfirmPassword);
                 if (!isEquals.Data)
                     return Response.Unprocessable(Report.Create("Passwords do not match"));
+
+                var exists = await _userRepository.ExistsByEmailAsync(userRequest.Email);
+                if (exists)
+                    return Response.Unprocessable(Report.Create("User exists"));
 
                 var passwordEncripted = await _securityService.EncryptPassword(userRequest.Password);
                 userRequest.Password = passwordEncripted.Data;
@@ -74,8 +70,9 @@ namespace User.Domain.Service.User
 
                 if (errors.Report.Count > 0)
                     return errors;
+
                 userEntity.Id = _generator.Generate();
-                var userPost = await _userRepository.PostRegister(userEntity);
+                var userPost = await _userRepository.Register(userEntity);
 
                 return response;
             }
@@ -87,33 +84,70 @@ namespace User.Domain.Service.User
 
         }
 
-        public IEnumerable<CreateUserRequest> Get()
+        public async Task<Response<List<UserDto>>> Get()
         {
-            var userEntities = _userRepository.Get();
-            List<CreateUserRequest> userDtos = new List<CreateUserRequest>();
-
-            if (userEntities != null)
+            try
             {
-                foreach (var entity in userEntities)
+                var userEntities = _userRepository.Get();
+                var response = new Response<List<UserDto>>();
+
+                if (userEntities == null)
                 {
-                    var userDto = _mapper.Map<CreateUserRequest>(entity);
-                    userDtos.Add(userDto);
+                    response.Report.Add(Report.Create($"Could not find result"));
+                    return response;
                 }
 
-                return userDtos;
-            }
+                var userMap = _mapper.Map<List<UserDto>>(userEntities);
+                response.Data = userMap;
 
-            return null;
+                if (response.Report.Any())
+                    return Response.Unprocessable<List<UserDto>>(response.Report);
+
+                return Response.OK(userMap);
+
+            }
+            catch (Exception ex)
+            {
+                var responseReport = Report.Create(ex.Message);
+
+                return Response.Unprocessable<List<UserDto>>(new List<Report>() { responseReport });
+            }
         }
 
-        public CreateUserRequest GetById(int id)
+        public async Task<Response<UserDto>> GetById(string id)
         {
-            var usuario = _userRepository.GetById(id);
+            var response = new Response<UserDto>();
+            UserEntity user;
 
-            if (usuario == null)
-                return _notification.AddWithReturn<CreateUserRequest>(ConfigureEnum.GetEnumDescription(UserEnum.CouldNotFind));
+            if (string.IsNullOrEmpty(id))
+            {
+                response.Report.Add(Report.Create("Empty field"));
+                return response;
+            }
+            try
+            {
+                user = _userRepository.GetById(id);
 
-            return _mapper.Map<CreateUserRequest>(usuario);
+                if (user == null)
+                {
+                    response.Report.Add(Report.Create($"User {id} not exists!"));
+                    return response;
+                }
+
+                var userMap = _mapper.Map<UserDto>(user);
+                response.Data = userMap;
+
+                if (response.Report.Any())
+                    return Response.Unprocessable<UserDto>(response.Report);
+
+                return Response.OK(userMap);
+            }
+            catch (Exception ex)
+            {
+                var responseReport = Report.Create(ex.Message);
+
+                return Response.Unprocessable<UserDto>(new List<Report>() { responseReport });
+            }
 
         }
 
@@ -133,6 +167,5 @@ namespace User.Domain.Service.User
 
             return new Response<AuthResponse>(token);
         }
-       
     }
 }

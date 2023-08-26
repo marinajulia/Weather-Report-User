@@ -1,6 +1,4 @@
-﻿using User.SharedKernel.Utils.Enums;
-
-namespace User.Domain.Service.User.Entities
+﻿namespace User.Domain.Service.User.Entities
 {
     public class UserEntity
     {

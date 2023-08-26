@@ -1,12 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using User.Domain.Mapper;
+﻿using Microsoft.AspNetCore.Mvc;
 using User.Domain.Service.User.Dto;
 using User.Domain.Service.User;
-using User.SharedKernel.Utils.Notifications;
 using Microsoft.AspNetCore.Authorization;
-using User.Domain.Service.User.Entities;
-using User.Domain.Common.Validations.Base;
 
 namespace User.Api.Controllers.User
 {
@@ -16,12 +11,9 @@ namespace User.Api.Controllers.User
 
     public class UserController : Controller
     {
-        private readonly INotification _notification;
         private readonly IUserService _userService;
-        //tirar notification
-        public UserController(INotification notification, IUserService userService)
+        public UserController(IUserService userService)
         {
-            _notification = notification;
             _userService = userService;
         }
 
@@ -38,22 +30,24 @@ namespace User.Api.Controllers.User
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<ActionResult> Get()
         {
-            var response = _userService.Get();
-            if (response == null)
-                return BadRequest(_notification.GetNotifications());
+            var response = await _userService.Get();
+
+            if (response.Report.Any())
+                return UnprocessableEntity(response.Report);
 
             return Ok(response);
         }
 
         [HttpGet]
         [Route("id")]
-        public IActionResult GetById(int id)
+        public async Task<ActionResult> GetById([FromQuery] string id)
         {
-            var response = _userService.GetById(id);
-            if (response == null)
-                return BadRequest(_notification.GetNotifications());
+            var response = await _userService.GetById(id);
+
+            if (response.Report.Any())
+                return UnprocessableEntity(response.Report);
 
             return Ok(response);
         }
