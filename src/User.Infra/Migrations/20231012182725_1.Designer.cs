@@ -11,7 +11,7 @@ using User.Infra.Data;
 namespace User.Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230812220933_1")]
+    [Migration("20231012182725_1")]
     partial class _1
     {
         /// <inheritdoc />
